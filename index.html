@@ -6,119 +6,158 @@
 <title>Pencil Throwing Co.</title>
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
 
-    body {
-        background: #0f0f0f;
-        color: white;
-        overflow-x: hidden;
-    }
+body {
+    background: #0a0a0a;
+    color: white;
+    overflow-x: hidden;
+}
 
-    header {
-        position: fixed;
-        width: 100%;
-        padding: 20px 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        backdrop-filter: blur(10px);
-        background: rgba(0,0,0,0.5);
-        z-index: 100;
-    }
+/* NAVBAR */
+header {
+    position: fixed;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(15px);
+    background: rgba(0,0,0,0.6);
+    z-index: 100;
+    transition: 0.3s;
+}
 
-    header h1 {
-        font-size: 20px;
-        letter-spacing: 1px;
-    }
+header.scrolled {
+    box-shadow: 0 0 20px rgba(255,255,255,0.1);
+}
 
-    nav a {
-        margin-left: 25px;
-        text-decoration: none;
-        color: white;
-        opacity: 0.7;
-        transition: 0.3s;
-    }
+nav a {
+    margin-left: 25px;
+    text-decoration: none;
+    color: white;
+    opacity: 0.7;
+    transition: 0.3s;
+}
 
-    nav a:hover {
-        opacity: 1;
-    }
+nav a:hover {
+    opacity: 1;
+}
 
-    .hero {
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        flex-direction: column;
-        background: radial-gradient(circle at center, #1a1a1a, #000);
-    }
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    background: radial-gradient(circle at center, #1a1a1a, #000);
+}
 
-    .hero h2 {
-        font-size: 60px;
-        font-weight: 600;
-        margin-bottom: 20px;
-    }
+.hero h2 {
+    font-size: 65px;
+    margin-bottom: 20px;
+}
 
-    .hero p {
-        opacity: 0.7;
-        max-width: 500px;
-    }
+.hero p {
+    opacity: 0.7;
+    max-width: 500px;
+}
 
-    .btn {
-        margin-top: 30px;
-        padding: 12px 30px;
-        border-radius: 999px;
-        border: none;
-        background: white;
-        color: black;
-        font-weight: 600;
-        cursor: pointer;
-        transition: 0.3s;
-    }
+.btn {
+    margin-top: 30px;
+    padding: 12px 30px;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(45deg, #ffffff, #aaaaaa);
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-    .btn:hover {
-        transform: scale(1.05);
-    }
+.btn:hover {
+    transform: scale(1.1);
+}
 
-    section {
-        padding: 100px 40px;
-        text-align: center;
-    }
+/* SECTIONS */
+section {
+    padding: 100px 40px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.6s;
+}
 
-    .team {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 30px;
-        margin-top: 40px;
-    }
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-    .card {
-        background: #1a1a1a;
-        padding: 30px;
-        border-radius: 20px;
-        transition: 0.3s;
-    }
+/* TEAM */
+.team {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
 
-    .card:hover {
-        transform: translateY(-10px);
-    }
+.card {
+    background: #151515;
+    padding: 30px;
+    border-radius: 20px;
+    transition: 0.3s;
+    border: 1px solid rgba(255,255,255,0.05);
+}
 
-    footer {
-        text-align: center;
-        padding: 30px;
-        opacity: 0.5;
-    }
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 0 20px rgba(255,255,255,0.1);
+}
+
+/* STATS */
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.stat {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* CONTACT */
+input, textarea {
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: #1a1a1a;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    opacity: 0.5;
+}
 </style>
 </head>
 
 <body>
 
-<header>
+<header id="header">
     <h1>Pencil Throwing Co.</h1>
     <nav>
         <a href="#about">About</a>
@@ -129,46 +168,87 @@
 
 <div class="hero">
     <h2>Precision. Power. Pencils.</h2>
-    <p>The world's most advanced pencil throwing business. Built different. Thrown harder.</p>
-    <button class="btn" onclick="scrollToSection('about')">Learn More</button>
+    <p>We don’t throw pencils. We engineer trajectory excellence.</p>
+    <button class="btn" onclick="scrollToSection('about')">Enter</button>
 </div>
 
 <section id="about">
     <h2>About Us</h2>
     <p style="margin-top:20px; opacity:0.7; max-width:600px; margin-inline:auto;">
-        We specialize in elite-level pencil throwing techniques, combining engineering precision with raw skill.
-        Whether it's distance, accuracy, or just looking insanely cool—we do it better than anyone.
+        Pencil Throwing Co. is redefining what it means to launch graphite-based projectiles.
+        We combine physics, skill, and questionable decisions into one elite experience.
     </p>
+
+    <div class="stats">
+        <div class="stat">10,000+ Throws</div>
+        <div class="stat">99% Accuracy</div>
+        <div class="stat">∞ Coolness</div>
+    </div>
 </section>
 
 <section id="team">
-    <h2>Our Team</h2>
+    <h2>Leadership</h2>
     <div class="team">
-        <div class="card">Arav Arora<br><span style="opacity:0.6;">Founder</span></div>
-        <div class="card">Silas Omohundro<br><span style="opacity:0.6;">Co-Founder</span></div>
-        <div class="card">Ethan Wagner-Clark<br><span style="opacity:0.6;">Engineer</span></div>
-        <div class="card">Malachi Jones<br><span style="opacity:0.6;">Operations</span></div>
+        <div class="card">
+            Arav Arora<br>
+            <span style="opacity:0.6;">Founder</span>
+        </div>
+
+        <div class="card">
+            Ethan Wagner-Clark<br>
+            <span style="opacity:0.6;">Co-Founder</span>
+        </div>
+
+        <div class="card">
+            Silas Omohundro<br>
+            <span style="opacity:0.6;">Engineering Lead</span>
+        </div>
+
+        <div class="card">
+            Malachi Jones<br>
+            <span style="opacity:0.6;">Operations Lead</span>
+        </div>
     </div>
 </section>
 
 <section id="contact">
-    <h2>Contact</h2>
-    <p style="margin-top:20px; opacity:0.7;">
-        Want to witness pencil throwing greatness?<br>
-        Reach out and join the movement.
-    </p>
+    <h2>Contact Us</h2>
+    <p style="opacity:0.7;">Join the pencil revolution.</p>
+
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Your Email">
+    <textarea placeholder="Your Message"></textarea>
+    <button class="btn">Send</button>
 </section>
 
 <footer>
-    © 2026 Pencil Throwing Co.
+    © 2026 Pencil Throwing Co. | Built Different
 </footer>
 
 <script>
+// Smooth scroll
 function scrollToSection(id) {
     document.getElementById(id).scrollIntoView({
         behavior: "smooth"
     });
 }
+
+// Navbar glow on scroll
+window.addEventListener("scroll", () => {
+    document.getElementById("header").classList.toggle("scrolled", window.scrollY > 50);
+});
+
+// Fade-in animation
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+    sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+            sec.classList.add("visible");
+        }
+    });
+});
 </script>
 
 </body>
